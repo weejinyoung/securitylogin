@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mystudy.securitylogin.domain.project.Project;
+import mystudy.securitylogin.domain.support.Support;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,11 +25,18 @@ public class Member implements UserDetails {
     @OneToMany(mappedBy = "projectMaker")
     private List<Project> projects = new ArrayList<>();
 
+    @OneToMany(mappedBy = "supporter")
+    private List<Support> supports = new ArrayList<>();
+
     private String loginId;
     private String password;
     private String email;
     private String name;
     private String comment;
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     @Builder
     public Member(String loginId, String password, String email, String name) {

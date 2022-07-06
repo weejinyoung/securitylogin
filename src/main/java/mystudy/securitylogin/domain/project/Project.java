@@ -4,9 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mystudy.securitylogin.domain.member.Member;
+import mystudy.securitylogin.domain.support.Support;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,6 +23,9 @@ public class Project {
     @JoinColumn(name = "member_code")
     private Member projectMaker;
 
+    @OneToMany(mappedBy = "project")
+    private List<Support> supports = new ArrayList<>();
+
     private String title;
     private String desc;
 
@@ -27,15 +33,19 @@ public class Project {
     private LocalDateTime closedDate;
 
     private Status status;
-    private int progress;
-    private int goal;
+    private int fundingProgress;
+    private int fundingGoal;
 
     private Status isProjectSuccess() {
-        if (progress >= goal) {
+        if (fundingProgress >= fundingGoal) {
             return Status.SUCCESS;
         } else {
             return Status.FAIL;
         }
+    }
+
+    public void funding(int funding) {
+        fundingProgress += funding;
     }
 
     public void projectOpen() {
@@ -49,10 +59,10 @@ public class Project {
     }
 
     @Builder
-    public Project(String title, String desc, int goal, LocalDateTime closedDate) {
+    public Project(String title, String desc, int fundingGoal, LocalDateTime closedDate) {
         this.title = title;
         this.desc = desc;
-        this.goal = goal;
+        this.fundingGoal = fundingGoal;
         this.closedDate = closedDate;
         this.status = Status.PREPARING;
     }
