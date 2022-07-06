@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/springlogin
+    url: jdbc:h2:./springsequritylogin
     username: sa
-    password: 004637
+    password: '004637'
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
