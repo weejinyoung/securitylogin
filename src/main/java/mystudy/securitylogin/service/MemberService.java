@@ -9,9 +9,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private MemberRepository userRepository;
+    private MemberRepository memberRepository;
 
     public Long UserSignUp(Member member) {
         return null;
+    }
+
+    public void validationDuplicateMember(Long code) {
+        if (memberRepository.findOne(code) == null) {
+
+        }
     }
 }
