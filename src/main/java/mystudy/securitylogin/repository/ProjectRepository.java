@@ -1,7 +1,6 @@
 package mystudy.securitylogin.repository;
 
 import lombok.RequiredArgsConstructor;
-import mystudy.securitylogin.domain.member.Member;
 import mystudy.securitylogin.domain.project.Project;
 import org.springframework.stereotype.Repository;
 

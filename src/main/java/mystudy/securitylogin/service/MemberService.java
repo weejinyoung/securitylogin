@@ -1,23 +1,17 @@
 package mystudy.securitylogin.service;
 
 import lombok.RequiredArgsConstructor;
-import mystudy.securitylogin.domain.member.Member;
-import mystudy.securitylogin.repository.MemberRepository;
+import mystudy.securitylogin.domain.user.User;
+import mystudy.securitylogin.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class MemberService {
 
-    private MemberRepository memberRepository;
+    private final UserRepository userRepository;
 
-    public Long UserSignUp(Member member) {
+    public Long UserSignUp(User member) {
         return null;
-    }
-
-    public void validationDuplicateMember(Long code) {
-        if (memberRepository.findOne(code) == null) {
-
-        }
     }
 }

@@ -3,8 +3,8 @@ package mystudy.securitylogin.domain.support;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import mystudy.securitylogin.domain.member.Member;
 import mystudy.securitylogin.domain.project.Project;
+import mystudy.securitylogin.domain.user.User;
 
 import javax.persistence.*;
 
@@ -18,8 +18,8 @@ public class Support {
     private Long code;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_code")
-    private Member supporter;
+    @JoinColumn(name = "user_code")
+    private User supporter;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_code")

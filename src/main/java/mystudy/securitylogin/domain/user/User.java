@@ -1,4 +1,4 @@
-package mystudy.securitylogin.domain.member;
+package mystudy.securitylogin.domain.user;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,11 +16,11 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Member implements UserDetails {
+public class User implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_code")
-    private Long code;
+    @Column(name = "user_id")
+    private Long id;
 
     @OneToMany(mappedBy = "projectMaker")
     private List<Project> projects = new ArrayList<>();
@@ -28,22 +28,34 @@ public class Member implements UserDetails {
     @OneToMany(mappedBy = "supporter")
     private List<Support> supports = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
     private String loginId;
     private String password;
     private String email;
     private String name;
-    private String comment;
+    private String picture;
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
+
+    public User update(String name, String picture) {
+        this.name = name;
+        this.picture = picture;
+        return this;
     }
 
     @Builder
-    public Member(String loginId, String password, String email, String name) {
+    public User(String loginId, String password, String email, String name, String picture, Role role) {
         this.loginId = loginId;
         this.password = password;
         this.email = email;
         this.name = name;
+        this.picture = picture;
+        this.role = role;
     }
 
     @Override
