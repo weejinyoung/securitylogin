@@ -32,6 +32,7 @@ public class Project {
     private LocalDateTime openDate;
     private LocalDateTime closedDate;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
     private int fundingProgress;
     private int fundingGoal;
