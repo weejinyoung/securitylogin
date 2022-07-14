@@ -18,7 +18,7 @@ public class Support {
     private Long code;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_code")
+    @JoinColumn(name = "user_id")
     private User supporter;
 
     @ManyToOne(fetch = FetchType.LAZY)
