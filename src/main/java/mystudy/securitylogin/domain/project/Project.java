@@ -17,10 +17,11 @@ import java.util.List;
 public class Project {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long code;
+    @Column(name = "project_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_code")
+    @JoinColumn(name = "member_id")
     private User projectMaker;
 
     @OneToMany(mappedBy = "project")

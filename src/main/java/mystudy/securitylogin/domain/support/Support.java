@@ -13,16 +13,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Support {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long code;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "support_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User supporter;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_code")
+    @JoinColumn(name = "project_id")
     private Project project;
 
     private int funding;

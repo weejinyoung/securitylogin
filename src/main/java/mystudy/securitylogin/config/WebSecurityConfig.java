@@ -2,9 +2,7 @@ package mystudy.securitylogin.config;
 
 import lombok.RequiredArgsConstructor;
 import mystudy.securitylogin.domain.user.Role;
-import mystudy.securitylogin.repository.UserRepository;
 import mystudy.securitylogin.service.CustomOAuth2UserService;
-import mystudy.securitylogin.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,7 +35,6 @@ public class WebSecurityConfig {
                     .oauth2Login()
                         .userInfoEndpoint()
                             .userService(customOAuth2UserService);
-
         return http.build();
     }
 
