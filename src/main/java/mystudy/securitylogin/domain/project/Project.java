@@ -61,7 +61,9 @@ public class Project {
     }
 
     @Builder
-    public Project(String title, String desc, int fundingGoal, LocalDateTime closedDate) {
+    public Project(User projectMaker, String title, String desc, int fundingGoal, LocalDateTime closedDate) {
+        this.projectMaker = projectMaker;
+        projectMaker.getProjects().add(this);
         this.title = title;
         this.desc = desc;
         this.fundingGoal = fundingGoal;

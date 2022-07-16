@@ -27,12 +27,19 @@ public class Support {
 
     private int funding;
     private String way;
-    private String comment;
 
-    @Builder
-    public Support(String way, String comment) {
-        this.way = way;
-        this.comment = comment;
+    public Project cancelSupport(Project project) {
+        project.getSupports().remove(this);
+        return project;
     }
 
+    @Builder
+    public Support(int funding, String way, User supporter, Project project) {
+        this.project = project;
+        project.getSupports().add(this);
+        supporter.getSupports().add(this);
+        this.supporter = supporter;
+        this.funding = funding;
+        this.way = way;
+    }
 }

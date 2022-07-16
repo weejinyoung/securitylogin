@@ -14,7 +14,7 @@ public class SupportRepository {
 
     public Long save(Support support) {
         em.persist(support);
-        return support.getCode();
+        return support.getId();
     }
 
     public Support findOne(Long code) {

@@ -14,7 +14,7 @@ public class ProjectRepository {
 
     public Long save(Project project) {
         em.persist(project);
-        return project.getCode();
+        return project.getId();
     }
 
     public Project findOne(Long code) {
